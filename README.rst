@@ -139,14 +139,14 @@ Playbook Environments
 The Traffic Control playbooks are built in such a way that a user can
 define an "environment", so that static variables can be kept in source
 control so that the next person can use them as well. The environment
-variable \*\*\*\*TC\_ENVS\*\*\*\* is referenced in the playbooks such
+variable *TC_ENVS* is referenced in the playbooks such
 that if specified will tell the playbooks to look in a "side" directory
 for any playbook varible overrides.
 
 Playbook 'docker' tags
 ^^^^^^^^^^^^^^^^^^^^^^
 
-TC\_ENVS
+TC_ENVS
 ''''''''
 
 General Command Cheat Sheet FAQ
