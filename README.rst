@@ -1,21 +1,22 @@
-`Table of Contents <#table-of-contents>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  `Overview <#overview>`__
--  `Setup <#setup>`__
--  `Traffic Control Aliases <#traffic-control-aliases>`__
--  `Traffic Control Environments <#traffic-control-environments>`__
+* Contents:
 
-   -  `TC\_ENVS <#tc_envs>`__
+  + 1 Overview_
+  + 2 Setup_
+  + 3 `Traffic Control Component Aliases`_
+  + 4 `Traffic Control Ansible Directory Structure`_
+  + 5 `Directory Structure Meaning`_
+  + 6 `Playbook Environments`_
+  + 7 `Playbook 'docker' tags`_
 
--  `General Command Cheat Sheet
-   FAQ <#general-command-cheat-sheet-faq>`__
--  `Yum Repository <#yum-repository>`__
--  `Playbook Commandline Variables <#playbook-commandline-variables>`__
--  `Executing playbook on single
-   host <#executing-playbook-on-single-host>`__
--  `Executing playbook on all
-   hosts <#executing-playbook-on-all-hosts>`__
+    + 7.1 TC_ENVS_
+
+  + 8 `General Command Cheat Sheet FAQ`_
+  + 9 `Yum Repository`_
+  + 10 `Playbook Commandline Variables`_
+  + 11 `Executing playbook on single host`_
+  + 12 `Executing playbook on all hosts`_
+
 
 Overview
 ^^^^^^^^
