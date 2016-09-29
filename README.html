@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; Traffic Control 1.7-dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Traffic Control 1.7-dev documentation" href="index.html"/>
+        <link rel="prev" title="Traffic Control Ansible Automation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Traffic Control
+          
+
+          
+            
+            <img src="_static/tc_logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#traffic-control-component-aliases">Traffic Control Component Aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#traffic-control-ansible-directory-structure">Traffic Control Ansible Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#directory-structure-meaning">Directory Structure Meaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#playbook-environments">Playbook Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#playbook-docker-tags">Playbook &#8216;docker&#8217; tags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tc-envs">TC_ENVS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#general-command-cheat-sheet-faq">General Command Cheat Sheet FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#yum-repository">Yum Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#playbook-commandline-variables">Playbook Commandline Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#executing-playbook-on-single-host">Executing playbook on single host</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#executing-playbook-on-all-hosts">Executing playbook on all hosts</a></li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Traffic Control</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/README.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <style> .red {color:red} </style>
+
+.. toctree::  :maxdepth: 3<div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>Traffic Control uses Ansible for automating our environment setup,
+deploying, or just general tooling. It assumes a basic understanding of
+what Ansible is and how to use it (See setup links below)</p>
+</div>
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.ansible.com/ansible/intro_installation.html">Install
+Ansible</a></li>
+<li><a class="reference external" href="http://docs.ansible.com/ansible/index.html">Ansible
+Documentation</a></li>
+<li>Setup TC_ENVS to point to the local &#8216;environments&#8217; (or external
+directory that is source controlled). To make the environment
+variable permanent add it to the .profile for your shell.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>$ export TC_ENVS=&quot;full path to your &#39;ansible_automation/environments&#39; directory.&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="traffic-control-component-aliases">
+<h1>Traffic Control Component Aliases<a class="headerlink" href="#traffic-control-component-aliases" title="Permalink to this headline">¶</a></h1>
+<p>Traffic Control has the following components so when you see variables
+in the playbooks like <strong>to_user</strong> that means a &#8216;Traffic Ops&#8217; user</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="61%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Acronym</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Ansible</td>
+<td>ansible</td>
+</tr>
+<tr class="row-odd"><td>Influxdb</td>
+<td>influxdb</td>
+</tr>
+<tr class="row-even"><td>Traffic Monitor</td>
+<td>tm</td>
+</tr>
+<tr class="row-odd"><td>Traffic Ops</td>
+<td>to</td>
+</tr>
+<tr class="row-even"><td>Traffic Portal</td>
+<td>tp</td>
+</tr>
+<tr class="row-odd"><td>Traffic Router</td>
+<td>tr</td>
+</tr>
+<tr class="row-even"><td>Traffic Stats</td>
+<td>ts</td>
+</tr>
+<tr class="row-odd"><td>Postgres</td>
+<td>pg</td>
+</tr>
+<tr class="row-even"><td>Riak</td>
+<td>riak</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="traffic-control-ansible-directory-structure">
+<h1>Traffic Control Ansible Directory Structure<a class="headerlink" href="#traffic-control-ansible-directory-structure" title="Permalink to this headline">¶</a></h1>
+<p>Directory structure:</p>
+<div class="highlight-python"><div class="highlight"><pre>ansible_automation
+├── environments
+│   └── dev
+├── roles
+│   ├── common
+│   ├── confighost
+│   ├── databases
+│   ├── languages
+│   ├── traffic_analytics
+│   │   ├── elasticsearch
+│   │   │   ...
+│   │   ├── heka
+│   │   │   ...
+│   │   ├── kafka
+│   │   │   ...
+│   │   ├── kibana
+│   │   │   ...
+│   │   ├── telegraf
+│   │   │   ...
+│   │   └── zookeeper
+│   │   │   ...
+│   ├── traffic_control
+│   │   ├── traffic_logs_generator
+│   │   │     ...
+│   │   ├── traffic_monitor
+│   │   │     ...
+│   │   ├── traffic_ops
+│   │   │     ...
+│   │   └── traffic_router
+│   │   │     ...
+│   ├── updateserver
+│   │   │     ...
+│   ├── users
+│   │   │     ...
+│   └── yumrepos
+│   │   │     ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="directory-structure-meaning">
+<h1>Directory Structure Meaning<a class="headerlink" href="#directory-structure-meaning" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>common</li>
+<li>confighost</li>
+<li>databases</li>
+<li>languages</li>
+<li>traffic_analytics/elasticsearch</li>
+<li>traffic_analytics/heka</li>
+<li>traffic_analytics/kafka</li>
+<li>traffic_analytics/kibana</li>
+<li>traffic_analytics/telegraf</li>
+<li>traffic_analytics/zookeeper</li>
+<li>traffic_control/traffic_logs_generator</li>
+<li>traffic_control/traffic_monitor</li>
+<li>traffic_control/traffic_ops</li>
+<li>traffic_control/traffic_router</li>
+<li>users</li>
+<li>yumrepos</li>
+</ul>
+</div>
+<div class="section" id="playbook-environments">
+<h1>Playbook Environments<a class="headerlink" href="#playbook-environments" title="Permalink to this headline">¶</a></h1>
+<p>The Traffic Control playbooks are built in such a way that a user can
+define an &#8220;environment&#8221;, so that static variables can be kept in source
+control so that the next person can use them as well. The environment
+variable <em>TC_ENVS</em> is referenced in the playbooks such
+that if specified will tell the playbooks to look in a &#8220;side&#8221; directory
+for any playbook varible overrides.</p>
+</div>
+<div class="section" id="playbook-docker-tags">
+<h1>Playbook &#8216;docker&#8217; tags<a class="headerlink" href="#playbook-docker-tags" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tc-envs">
+<h2>TC_ENVS<a class="headerlink" href="#tc-envs" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="general-command-cheat-sheet-faq">
+<h1>General Command Cheat Sheet FAQ<a class="headerlink" href="#general-command-cheat-sheet-faq" title="Permalink to this headline">¶</a></h1>
+<p>TODO: doc
+&#8211;lists-hosts &#8211;limit examples</p>
+<dl class="docutils">
+<dt>:red:<a href="#id1"><span class="problematic" id="id2">`</span></a>| Q: How can I automate setting up users on all of my Traffic Control</dt>
+<dd>hosts?`</dd>
+</dl>
+<div class="line-block">
+<div class="line">A: If your users are in Traffic Ops (whose roles are &#8216;admin&#8217; and have
+their &#8220;Publish SSH Key&#8221; populated), the &#8216;setup_host.yml&#8217; playbook can
+extract the users&#8217; ssh keys from Traffic Ops and create remote users
+on your hosts accordingly. The only requirement is an existing user
+must existing to bootstrap the process. In this example &#8216;poweruser&#8217;
+has sudo access and the host where the command is being executed has
+the &#8216;poweruser&#8217; private ssh key available.</div>
+</div>
+<p>See the following example command:</p>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook setup_host.yml -i 127.0.0.1, --extra-vars <span class="s2">&quot;env=test remote_user=poweruser</span>
+<span class="s2">     to_username=your-to-user to_password=your-to-password&quot;</span> --private-key<span class="o">=</span>~/.ssh/poweruser_id_rsa
+</pre></div>
+</div>
+</div>
+<div class="section" id="yum-repository">
+<h1>Yum Repository<a class="headerlink" href="#yum-repository" title="Permalink to this headline">¶</a></h1>
+<p>For example, see below:</p>
+<hr class="docutils" />
+<p>yumrepos: - global: name: your_repo baseurl:
+&#8220;<a class="reference external" href="http://your_repo_url/repo">http://your_repo_url/repo</a>&#8221; descr: &#8220;My Custom Yum Repo&#8221;</p>
+</div>
+<div class="section" id="playbook-commandline-variables">
+<h1>Playbook Commandline Variables<a class="headerlink" href="#playbook-commandline-variables" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Extra Vars</th>
+<th class="head">Example Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>remote_user</strong></td>
+<td>some-user</td>
+</tr>
+<tr class="row-odd"><td><strong>to_url</strong></td>
+<td><a class="reference external" href="http://traffic_ops.com">http://traffic_ops.com</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="executing-playbook-on-single-host">
+<h1>Executing playbook on single host<a class="headerlink" href="#executing-playbook-on-single-host" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">$</span> <span class="pre">ansible-playbook</span> <span class="pre">-i</span> <span class="pre">inventory/inventory</span> <span class="pre">--limit</span> <span class="pre">127.0.0.1</span> <span class="pre">--extra-vars</span> <span class="pre">&quot;remote_user=some-user</span> <span class="pre">to_url=http://</span></code>
+<code class="docutils literal"><span class="pre">traffic_ops.com</span></code></div></blockquote>
+</div>
+<div class="section" id="executing-playbook-on-all-hosts">
+<h1>Executing playbook on all hosts<a class="headerlink" href="#executing-playbook-on-all-hosts" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">ansible-playbook</span> <span class="pre">-i</span> <span class="pre">inventory/inventory</span> <span class="pre">--extra-vars</span> <span class="pre">&quot;remote_user=some-user</span> <span class="pre">to_url=http://traffic_ops.com&quot;</span> <span class="pre">*.yml</span></code></p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Traffic Control Ansible Automation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.7-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
